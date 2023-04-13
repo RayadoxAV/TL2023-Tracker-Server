@@ -44,7 +44,7 @@ class Server {
       this.ioServer.to(socket.id).emit('confirm-connection', socket.id);
     });
 
-    const pollHr = new Worker('./src/polling/pollHr.ts',);
+    const pollHr = new Worker('./src/polling/pollHr.js',);
     pollHr.postMessage({ command: 'start' });
 
     pollHr.on('message', async (data) => {
@@ -56,7 +56,7 @@ class Server {
       })
     });
 
-    const pollFinance = new Worker('./src/polling/pollFinance.ts',);
+    const pollFinance = new Worker('./src/polling/pollFinance.js',);
     pollFinance.postMessage({ command: 'start' });
 
     pollFinance.on('message', async (data) => {
@@ -68,7 +68,7 @@ class Server {
       })
     });
 
-    const pollDev = new Worker('./src/polling/pollDev.ts',);
+    const pollDev = new Worker('./src/polling/pollDev.js',);
     pollDev.postMessage({ command: 'start' });
 
     pollDev.on('message', async (data) => {
@@ -80,7 +80,7 @@ class Server {
       })
     });
 
-    const pollResearch = new Worker('./src/polling/pollResearch.ts',);
+    const pollResearch = new Worker('./src/polling/pollResearch.js',);
     pollResearch.postMessage({ command: 'start' });
 
     pollResearch.on('message', async (data) => {
@@ -92,7 +92,7 @@ class Server {
       })
     });
 
-    const pollOperation = new Worker('./src/polling/pollOperation.ts',);
+    const pollOperation = new Worker('./src/polling/pollOperation.js',);
     pollOperation.postMessage({ command: 'start' });
 
     pollOperation.on('message', async (data) => {
