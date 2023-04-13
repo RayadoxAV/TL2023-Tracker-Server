@@ -15,7 +15,7 @@ users.post('/users/register', (request: Request, response: Response) => {
   if (username && email && name && password) {
     const hashedPassword = bcrypt.hashSync(password, 10);
 
-    const query = format(`INSERT INTO users VALUES (NULL, ?, ?, ?, ?, 1, 0);`, [username.toLowerCase(), hashedPassword, email, name]);
+    const query = format(`INSERT INTO users VALUES (0, ?, ?, ?, ?, 1, 0);`, [username.toLowerCase(), hashedPassword, email, name]);
 
     connection.query(query, (error: MysqlError, result: any[]) => {
       if (error) {

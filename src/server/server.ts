@@ -182,7 +182,7 @@ class Server {
               // Insertar el evento
               const isoDate = generateISODate();
               const status = this.determineStatus(component);
-              const insertQuery = format(`INSERT INTO record VALUES (NULL, ?, ?, ?, ?);`, [`${idService}-${component.id}`, '', isoDate, status]);
+              const insertQuery = format(`INSERT INTO record VALUES (0, ?, ?, ?, ?);`, [`${idService}-${component.id}`, '', isoDate, status]);
               const result = await connection.query(insertQuery);
               this.ioServer.emit('record-update', {
                 idRecord: result.insertId,
@@ -197,7 +197,7 @@ class Server {
             // Si no hay evento, insertarlo
             const isoDate = generateISODate();
             const status = this.determineStatus(component);
-            const insertQuery = format(`INSERT INTO record VALUES (NULL, ?, ?, ?, ?);`, [`${idService}-${component.id}`, '', isoDate, status]);
+            const insertQuery = format(`INSERT INTO record VALUES (0, ?, ?, ?, ?);`, [`${idService}-${component.id}`, '', isoDate, status]);
             const result = await connection.query(insertQuery);
 
             this.ioServer.emit('record-update', {
